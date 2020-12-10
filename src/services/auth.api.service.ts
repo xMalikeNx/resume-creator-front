@@ -1,11 +1,12 @@
-import { ApiService } from "./api.service";
+import { ApiService } from './api.service';
+import { LoginDto, RegistrationDto } from './types';
 
 export class AuthApiService extends ApiService {
-  fetchProfile = () => {
-    return this.get("/auth/profile");
-  };
+  fetchProfile = () => this.get('/auth/profile');
 
-  login = (login: string, password: string) => {
-    return this.post("/auth/login", { login, password });
-  };
+  login = (data: LoginDto) => this.post('/auth/login', data);
+
+  registration = (data: RegistrationDto) => this.post('/users/', data);
+
+  logout = () => this.post('/auth/logout');
 }

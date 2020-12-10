@@ -1,0 +1,32 @@
+.mnformControl {
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}
+
+.mnlabel {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.mninput {
+  width: 100%;
+  padding: 8px 15px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #383838;
+  font-size: 16px;
+  outline: none;
+}
+
+.required {
+  &::after {
+    content: ' *';
+    color: #d7575b;
+  }
+}
+
+.error {
+  margin-top: 5px;
+  color: #d7575b;
+}

@@ -1,0 +1,1 @@
+export { ResumeBoard } from './ResumeBoard';

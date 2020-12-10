@@ -1,8 +1,10 @@
-import { flow, types } from "mobx-state-tree";
-import { AuthApiService } from "../../services/auth.api.service";
-import { UserStoreModel } from "./user.store";
+import { flow, types } from 'mobx-state-tree';
+import { AuthApiService } from '../../services/auth.api.service';
+import { UserStoreModel } from './user.store';
 
 const authApi = new AuthApiService();
+
+export type AuthStoreLoadingState = 'fetchProfile' | 'loading';
 
 export const AuthStoreModel = types
   .model({
@@ -16,26 +18,33 @@ export const AuthStoreModel = types
         self.loading = true;
         const response = yield authApi.fetchProfile();
         self.user = UserStoreModel.create(response.data.payload);
+        self.isLoggedIn = true;
+        console.log(self.isLoggedIn);
       } catch (err) {
-        console.dir(err.response.status);
+        console.error(err);
       } finally {
         self.loading = false;
       }
     });
 
-    const login = flow(function* (login, password) {
+    const clearProfile = () => {
+      self.user = null;
+      self.isLoggedIn = false;
+    };
+
+    const logout = flow(function* () {
       try {
         self.loading = true;
-        yield authApi.login(login, password);
-        yield fetchProfile();
+        yield authApi.logout();
+        clearProfile();
       } catch (err) {
-        console.dir(err.response.status);
+        console.dir(err);
       } finally {
         self.loading = false;
       }
     });
 
-    return { fetchProfile, login };
+    return { fetchProfile, logout };
   });
 
 export const createAuthStore = () =>

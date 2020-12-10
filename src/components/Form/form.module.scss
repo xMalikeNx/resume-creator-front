@@ -1,0 +1,35 @@
+.formContainer {
+  position: relative;
+}
+
+.bordered {
+  width: 100%;
+  max-width: 340px;
+  padding: 50px 30px 30px;
+  border: 1.5px solid #383838;
+}
+
+.centered {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 20vh;
+  margin-bottom: 40px;
+}
+
+.title {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  background: #f3f3f3;
+  padding: 8px 15px;
+  font-weight: bold;
+  font-size: 22px;
+  transform: translate(-50%, -50%);
+}
+
+.error {
+  margin-top: 15px;
+  color: #d7575b;
+}

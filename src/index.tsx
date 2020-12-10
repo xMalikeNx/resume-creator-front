@@ -1,18 +1,21 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import { initAxios } from "./utils/initAxios";
-import { createRootStore } from "./mst/createRootStore";
-import { RootStoreProvider } from "./mst/rootStoreContext";
-import { App } from "./components/App";
-import "./index.scss";
+import { RootStoreProvider } from './mst/rootStoreContext';
+import { createRootStore } from './mst/createRootStore';
+import { initAxios } from './utils/initAxios';
+import { App } from './components/App';
+import './index.scss';
 
 initAxios();
 const rootStore = createRootStore();
 
 ReactDOM.render(
-  <RootStoreProvider value={rootStore}>
-    <App />
-  </RootStoreProvider>,
-  document.getElementById("root")
+  <Router>
+    <RootStoreProvider value={rootStore}>
+      <App />
+    </RootStoreProvider>
+  </Router>,
+  document.getElementById('root'),
 );
