@@ -5,6 +5,7 @@ import {
   InputStoreModel,
 } from '../../../components/Input/models/input.model';
 import { AuthApiService } from '../../../services/auth.api.service';
+import { extractError } from '../../../utils/extractError';
 
 const api = new AuthApiService();
 
@@ -61,7 +62,7 @@ export const RegistrationFormStoreModel = types
           password: self.password.value,
         });
       } catch (err) {
-        console.log(err);
+        self.error = extractError(err);
         throw err;
       }
     });

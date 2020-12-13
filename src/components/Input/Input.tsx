@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react';
+import React, { ChangeEvent, FC, useCallback, useMemo } from 'react';
 import classNames from 'classnames';
 import { observer } from 'mobx-react';
 
@@ -13,14 +13,28 @@ export type TInputProps = {
 
 export const Input: FC<TInputProps> = observer((props) => {
   const inputId = useMemo(() => uid(), []);
-  const { title, id, field, required, ...others } = props;
+  const { title, id, field, required, onChange, ...others } = props;
+
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      if (typeof onChange !== 'function') {
+        field.setValue(e.target.value);
+      } else {
+        onChange(e);
+      }
+    },
+    [onChange, field],
+  );
 
   return (
     <div className={styles.mnformControl}>
       {title && (
         <label
           htmlFor={id || inputId}
-          className={classNames(styles.mnlabel, require && styles.required)}
+          className={classNames(
+            styles.mnlabel,
+            (required || field.required) && styles.required,
+          )}
         >
           {title}
         </label>
@@ -30,8 +44,9 @@ export const Input: FC<TInputProps> = observer((props) => {
         id={id || inputId}
         className={classNames(styles.mninput)}
         value={field.value}
+        onChange={handleChange}
       />
-      {field.error && <span className={styles.error}>{field.error}</span>}
+      {field.error && <div className={styles.error}>{field.error}</div>}
     </div>
   );
 });

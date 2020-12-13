@@ -5,6 +5,7 @@ import {
   InputStoreModel,
 } from '../../../components/Input/models/input.model';
 import { AuthApiService } from '../../../services/auth.api.service';
+import { extractError } from '../../../utils/extractError';
 
 const api = new AuthApiService();
 
@@ -13,19 +14,19 @@ export const LoginFormStoreModel = types
     login: InputStoreModel,
     password: InputStoreModel,
     loading: false,
-    isFailed: false,
+    error: '',
   })
   .actions((self) => ({
     requestLogin: flow(function* requestLogin() {
       try {
         self.loading = true;
-        self.isFailed = false;
+        self.error = '';
         yield api.login({
           login: self.login.value,
           password: self.password.value,
         });
       } catch (err) {
-        self.isFailed = true;
+        self.error = extractError(err);
         throw err;
       } finally {
         self.loading = false;

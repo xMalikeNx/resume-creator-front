@@ -1,0 +1,45 @@
+.notification {
+  position: relative;
+  z-index: 999;
+  border: 1.5px solid #333;
+  width: 100%;
+  padding: 15px 15px;
+  margin-bottom: 15px;
+  background: #fefefe;
+}
+
+.success {
+  &::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 4px;
+    left: 0;
+    top: 0;
+    background: #96d17d;
+  }
+}
+
+.info {
+  &::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 4px;
+    left: 0;
+    top: 0;
+    background: #7dcfd1;
+  }
+}
+
+.error {
+  &::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 4px;
+    left: 0;
+    top: 0;
+    background: #d17d7d;
+  }
+}

@@ -11,14 +11,14 @@ import { Form } from '../../../../components/Form';
 export const LoginForm: FC = observer(() => {
   const loginFormStore = useContext(LoginFormContext);
   const { auth } = useStores();
-  const { login, password, isFailed, requestLogin } = loginFormStore;
+  const { login, password, requestLogin, error } = loginFormStore;
 
   const handleSubmit = useCallback(
     (e: FormEvent) => {
       e.preventDefault();
       requestLogin().then(() => auth.fetchProfile());
     },
-    [requestLogin, isFailed],
+    [requestLogin, error],
   );
 
   return (
@@ -26,8 +26,9 @@ export const LoginForm: FC = observer(() => {
       onSubmit={handleSubmit}
       bordered
       centered
+      small
       title="Авторизация"
-      error={isFailed && 'Неправильный логин или пароль'}
+      error={error}
     >
       <Input
         title="Логин"
@@ -48,7 +49,7 @@ export const LoginForm: FC = observer(() => {
       </Button>
       <div style={{ fontSize: '14px', textAlign: 'center', marginTop: '15px' }}>
         Нет аккаунта?
-        <Link to="/registration">Зарегистрироваться</Link>
+        <Link to="/registration"> Зарегистрироваться</Link>
       </div>
     </Form>
   );

@@ -1,5 +1,7 @@
 import { flow, types } from 'mobx-state-tree';
+import { format } from 'date-fns';
 import { AuthApiService } from '../../services/auth.api.service';
+import { extractError } from '../../utils/extractError';
 import { UserStoreModel } from './user.store';
 
 const authApi = new AuthApiService();
@@ -9,19 +11,27 @@ export type AuthStoreLoadingState = 'fetchProfile' | 'loading';
 export const AuthStoreModel = types
   .model({
     isLoggedIn: false,
-    loading: false,
+    loading: true,
     user: types.union(UserStoreModel, types.null),
   })
   .actions((self) => {
     const fetchProfile = flow(function* () {
       try {
         self.loading = true;
-        const response = yield authApi.fetchProfile();
-        self.user = UserStoreModel.create(response.data.payload);
+        const {
+          data: { payload },
+        } = yield authApi.fetchProfile();
+        self.user = UserStoreModel.create({
+          ...payload,
+          birthDate: payload.birthDate
+            ? format(new Date(payload.birthDate), 'dd.mm.yyyy')
+            : '',
+        });
         self.isLoggedIn = true;
-        console.log(self.isLoggedIn);
       } catch (err) {
-        console.error(err);
+        extractError(err);
+        // eslint-disable-next-line @typescript-eslint/no-use-before-define
+        logout();
       } finally {
         self.loading = false;
       }
@@ -38,7 +48,7 @@ export const AuthStoreModel = types
         yield authApi.logout();
         clearProfile();
       } catch (err) {
-        console.dir(err);
+        extractError(err);
       } finally {
         self.loading = false;
       }
@@ -50,6 +60,6 @@ export const AuthStoreModel = types
 export const createAuthStore = () =>
   AuthStoreModel.create({
     isLoggedIn: false,
-    loading: false,
+    loading: true,
     user: null,
   });

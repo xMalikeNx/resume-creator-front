@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react';
 import React, { FC, FormEvent, useCallback, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Button } from '../../../../components/Button';
@@ -5,7 +6,7 @@ import { Form } from '../../../../components/Form';
 import { Input } from '../../../../components/Input';
 import { RegistrationStoreContext } from '../RegistrationStoreContext/RegistrationStoreContext';
 
-export const RegistrationForm: FC = () => {
+export const RegistrationForm: FC = observer(() => {
   const history = useHistory();
   const {
     login,
@@ -31,7 +32,14 @@ export const RegistrationForm: FC = () => {
   );
 
   return (
-    <Form bordered centered title="Регистрация" onSubmit={handleSubmit}>
+    <Form
+      bordered
+      centered
+      small
+      title="Регистрация"
+      onSubmit={handleSubmit}
+      error={error}
+    >
       <Input
         field={login}
         title="Логин"
@@ -57,8 +65,8 @@ export const RegistrationForm: FC = () => {
       </Button>
       <div style={{ fontSize: '14px', textAlign: 'center', marginTop: '15px' }}>
         Уже есть аккаунт?
-        <Link to="/login">Войти</Link>
+        <Link to="/login"> Войти</Link>
       </div>
     </Form>
   );
-};
+});

@@ -1,0 +1,11 @@
+.notificationList {
+  position: fixed;
+  right: 0;
+  top: 0;
+  max-height: 100vh;
+  overflow-y: auto;
+  width: 100%;
+  max-width: 320px;
+  padding: 15px;
+  z-index: 1;
+}

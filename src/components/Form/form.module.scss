@@ -1,11 +1,14 @@
 .formContainer {
   position: relative;
+  width: 100%;
+  padding: 50px 30px 25px;
+}
+
+.smallFormContainer {
+  max-width: 340px;
 }
 
 .bordered {
-  width: 100%;
-  max-width: 340px;
-  padding: 50px 30px 30px;
   border: 1.5px solid #383838;
 }
 
@@ -20,16 +23,24 @@
 
 .title {
   position: absolute;
+  width: 100%;
   top: 0;
+  text-align: center;
   left: 50%;
-  background: #f3f3f3;
-  padding: 8px 15px;
   font-weight: bold;
   font-size: 22px;
   transform: translate(-50%, -50%);
 }
 
+.titleBackground {
+  display: inline-block;
+  background: #f3f3f3;
+  padding: 8px 15px;
+}
+
 .error {
   margin-top: 15px;
   color: #d7575b;
+  text-align: center;
+  font-size: 14px;
 }

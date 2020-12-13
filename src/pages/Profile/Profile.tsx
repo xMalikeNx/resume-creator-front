@@ -1,24 +1,27 @@
 import React, { FC, useMemo } from 'react';
+import { Layout } from '../../components/Layout';
 import { ProfileForm } from '../../forms/ProfileForm';
 import { UserStore } from '../../mst/models/user.store';
 import { useStores } from '../../mst/rootStoreContext';
-import { ProfileContext } from './components/ProfileContext';
-import { createProfileStoreModel } from './stores/profile.store';
+import { ProfileFormContext } from './components/ProfileFormContext';
+import { createProfileFormStoreModel } from './stores/profile.form.store';
 
 export const Profile: FC = () => {
   const { auth } = useStores();
-  const profileStore = useMemo(
-    () => createProfileStoreModel(auth.user as UserStore),
+  const profileFormStore = useMemo(
+    () => createProfileFormStoreModel(auth.user as UserStore),
     [],
   );
 
-  if (!profileStore) {
+  if (!profileFormStore) {
     return null;
   }
 
   return (
-    <ProfileContext.Provider value={profileStore}>
-      <ProfileForm />
-    </ProfileContext.Provider>
+    <ProfileFormContext.Provider value={profileFormStore}>
+      <Layout>
+        <ProfileForm />
+      </Layout>
+    </ProfileFormContext.Provider>
   );
 };

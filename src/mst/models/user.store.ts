@@ -7,6 +7,10 @@ export const UserStoreModel = types.model('UserModel').props({
   about: '',
   email: '',
   phone: '',
+  avatar: '',
+  address: '',
+  profession: '',
+  birthDate: '',
 });
 
 export interface UserStore extends Instance<typeof UserStoreModel> {}

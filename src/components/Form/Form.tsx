@@ -6,6 +6,7 @@ import styles from './form.module.scss';
 export type TFormProps = {
   bordered?: boolean;
   centered?: boolean;
+  small?: boolean;
   children: React.ReactNode;
   title?: string;
   error?: string | boolean;
@@ -16,6 +17,7 @@ export const Form: FC<TFormProps> = ({
   title,
   bordered,
   centered,
+  small,
   error,
   ...others
 }) => (
@@ -24,9 +26,14 @@ export const Form: FC<TFormProps> = ({
       styles.formContainer,
       bordered && styles.bordered,
       centered && styles.centered,
+      small && styles.smallFormContainer,
     )}
   >
-    {title && <div className={styles.title}>{title}</div>}
+    {title && (
+      <div className={styles.title}>
+        <div className={styles.titleBackground}>{title}</div>
+      </div>
+    )}
     <form {...others}>{children}</form>
     {error && <div className={styles.error}>{error}</div>}
   </div>

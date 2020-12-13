@@ -1,0 +1,33 @@
+.navigation {
+  width: 100%;
+  background: #383838;
+  padding: 15px;
+  color: #f3f3f3;
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.navItem {
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
+}
+
+.navLink {
+  display: block;
+  color: #f3f3f3;
+  text-decoration: none;
+  font-family: 'Source Sans Pro', sans-serif;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
