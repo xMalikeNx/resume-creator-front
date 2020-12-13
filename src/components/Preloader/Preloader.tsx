@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, HTMLAttributes, useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import { randomInteger } from '../../utils/randomInteger';
@@ -18,7 +18,9 @@ const loadingParts = [
   'Loading...',
 ];
 
-export const Preloader: FC = () => {
+export type TPreloader = HTMLAttributes<HTMLDivElement>;
+
+export const Preloader: FC<TPreloader> = ({ className, ...props }) => {
   const [content, setContent] = useState('L');
   const [partsIndex, setPartsIndex] = useState(1);
   const [filled, setFilled] = useState(false);
@@ -54,7 +56,7 @@ export const Preloader: FC = () => {
   }, []);
 
   return (
-    <div className={styles.preloader}>
+    <div {...props} className={classNames(styles.preloader, className)}>
       <div className={classNames(filled && styles.filled)}>
         {content}
         {showCursor && '|'}

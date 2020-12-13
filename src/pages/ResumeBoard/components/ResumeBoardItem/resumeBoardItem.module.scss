@@ -1,0 +1,26 @@
+.item {
+  border: 1.5px solid #333;
+  padding: 25px;
+  background: #fefefe;
+  text-decoration: none;
+
+  &:hover {
+    border-color: #7dcfd1;
+  }
+}
+
+.title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.url {
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.createdAt {
+  color: #888;
+  font-style: italic;
+}

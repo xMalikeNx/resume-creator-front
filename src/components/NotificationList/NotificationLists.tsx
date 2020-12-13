@@ -15,7 +15,7 @@ export const NotificationList: FC = observer(() => {
   return (
     <div className={styles.notificationList}>
       {ui.preferedNotifications.map((notification) => (
-        <Notification notification={notification} />
+        <Notification key={notification.id} notification={notification} />
       ))}
     </div>
   );

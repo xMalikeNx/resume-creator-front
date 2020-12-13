@@ -3,6 +3,7 @@ import { UiStore } from '../../../../mst/models/ui.store';
 
 export const NotificationModel = types
   .model({
+    id: types.identifier,
     message: types.string,
     type: 'info',
     timeout: 3000,
@@ -18,7 +19,7 @@ export const NotificationModel = types
 export type TNotificationType = 'info' | 'success' | 'error';
 
 export type TCreateNotificationModelProps = {
-  id?: string;
+  id: string;
   message: string;
   type?: TNotificationType;
   timeout?: number;

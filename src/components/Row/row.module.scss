@@ -1,0 +1,29 @@
+.row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.alignItemscenter {
+  align-items: center;
+}
+
+.alignItemstop {
+  align-items: flex-start;
+}
+
+.alignItemsbottom {
+  align-items: flex-end;
+}
+
+.justifyContentcenter {
+  justify-content: center;
+}
+
+.justifyContentleft {
+  justify-content: flex-start;
+}
+
+.justifyContentright {
+  justify-content: flex-end;
+}

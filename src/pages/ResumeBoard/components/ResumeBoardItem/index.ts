@@ -1,0 +1,1 @@
+export { ResumeBoardItem } from './ResumeBoardItem';

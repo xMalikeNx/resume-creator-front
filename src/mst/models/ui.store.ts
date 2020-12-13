@@ -5,6 +5,7 @@ import {
   TNotification,
   TNotificationType,
 } from '../../components/NotificationList/components/Notification/notification.model';
+import { uid } from '../../utils/uid';
 
 export const UiStoreModel = types
   .model('UiStore', {
@@ -21,7 +22,7 @@ export const UiStoreModel = types
       timeout?: number,
     ) => {
       self.notifications.push(
-        createNotificationModel({ message, type, timeout }),
+        createNotificationModel({ message, type, timeout, id: uid() }),
       );
     };
 

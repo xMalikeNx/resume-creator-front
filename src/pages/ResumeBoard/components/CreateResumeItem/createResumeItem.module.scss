@@ -1,0 +1,19 @@
+@import '../ResumeBoardItem/resumeBoardItem.module.scss';
+
+.description {
+  width: 100%;
+  height: 100%;
+  color: #888;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.plus {
+  text-align: center;
+  width: 100%;
+  font-size: 40px;
+  font-weight: bold;
+}

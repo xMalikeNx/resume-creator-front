@@ -1,0 +1,6 @@
+.resumeBoard {
+  padding-top: 60px;
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(4, 1fr);
+}
