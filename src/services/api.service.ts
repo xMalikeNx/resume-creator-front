@@ -1,10 +1,9 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
 export const HTTP_MATCH = /https?:\/\//;
-
 export class ApiService {
   private readonly baseUrl =
-    process.env.BASE_API_URL || 'http://localhost:3333';
+    process.env.REACT_APP_BASE_API_URL || 'http://localhost:3333';
 
   private prepareUrl = (url: string) => {
     if (HTTP_MATCH.test(url)) {
