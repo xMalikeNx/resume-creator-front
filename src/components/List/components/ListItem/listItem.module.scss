@@ -1,0 +1,14 @@
+.item {
+  padding-left: 30px;
+  position: relative;
+  &::after {
+    content: '';
+    border-radius: 50%;
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    left: 10px;
+    top: 6px;
+    background: #000;
+  }
+}

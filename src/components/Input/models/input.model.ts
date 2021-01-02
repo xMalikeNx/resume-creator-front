@@ -1,11 +1,17 @@
 import { Instance, types } from 'mobx-state-tree';
 
 export const InputStoreModel = types
-  .model({
+  .model('InputModel', {
     value: '',
     error: '',
-    required: false,
   })
+  .preProcessSnapshot((snapshot) => {
+    if (typeof snapshot === 'string') {
+      return { value: snapshot, error: '' };
+    }
+    return snapshot;
+  })
+  .postProcessSnapshot((snapshot) => snapshot.value)
   .actions((self) => ({
     setValue: (value: string) => {
       self.value = value;
@@ -18,13 +24,11 @@ export const InputStoreModel = types
 
 export type TcreateInputModelProps = {
   value?: string;
-  required?: boolean;
 };
 
 export const createInputModel = (props?: TcreateInputModelProps) =>
   InputStoreModel.create({
     value: props?.value || '',
-    required: Boolean(props?.required),
   });
 
 export type InputModel = Instance<typeof InputStoreModel>;

@@ -9,11 +9,12 @@ import { InputModel } from './models/input.model';
 export type TInputProps = {
   title?: string;
   field: InputModel;
+  noMargin?: boolean;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const Input: FC<TInputProps> = observer((props) => {
   const inputId = useMemo(() => uid(), []);
-  const { title, id, field, required, onChange, ...others } = props;
+  const { title, id, field, noMargin, required, onChange, ...others } = props;
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,14 +28,13 @@ export const Input: FC<TInputProps> = observer((props) => {
   );
 
   return (
-    <div className={styles.mnformControl}>
+    <div
+      className={classNames(noMargin && styles.noMargin, styles.mnformControl)}
+    >
       {title && (
         <label
           htmlFor={id || inputId}
-          className={classNames(
-            styles.mnlabel,
-            (required || field.required) && styles.required,
-          )}
+          className={classNames(styles.mnlabel, required && styles.required)}
         >
           {title}
         </label>

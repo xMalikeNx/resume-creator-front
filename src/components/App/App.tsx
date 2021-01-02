@@ -12,6 +12,7 @@ import { Editor } from '../../pages/Editor';
 import { Login } from '../../pages/Login';
 import { Preloader } from '../Preloader';
 import styles from './app.module.scss';
+import { ResumeViewer } from '../../pages/ResumeViewer';
 
 const App: FC = () => {
   const { auth } = useStores();
@@ -31,6 +32,7 @@ const App: FC = () => {
       <ProtectedRoute path="/profile" component={Profile} exact />
       <ProtectedRoute path="/editor/:resumeId" component={Editor} exact />
       <ProtectedRoute path="/editor" component={Editor} exact />
+      <Route path="/resume/:userLogin/:resumeId" component={ResumeViewer} />
       <Route path="/login" component={Login} exact />
       <Route path="/registration" component={Registration} exact />
     </div>

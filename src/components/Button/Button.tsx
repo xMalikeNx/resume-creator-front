@@ -6,16 +6,25 @@ import styles from './button.module.scss';
 
 export type TButtonProps = {
   position?: 'left' | 'right' | 'center';
+  view?: 'plain';
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button: FC<TButtonProps> = ({
   children,
   position = 'left',
+  view,
   className,
   ...others
 }) => (
   <div className={classNames(styles.buttonWrapper, styles[position])}>
-    <button className={classNames(styles.button, className)} {...others}>
+    <button
+      className={classNames(
+        styles.button,
+        className,
+        view && styles[`button_${view}`],
+      )}
+      {...others}
+    >
       {children}
     </button>
   </div>

@@ -16,3 +16,23 @@ export type LoginDto = {
 };
 
 export type RegistrationDto = LoginDto;
+
+export type ResumeDto = {
+  name: string;
+  url?: string;
+  skills?: string[];
+  experience?: {
+    company: string;
+    position?: string;
+    startDate: string;
+    endDate?: string;
+    duties?: string[];
+    description?: string;
+  };
+  education?: {
+    institution: string;
+    speciality: string;
+    startDate: string;
+    endDate?: string;
+  };
+};

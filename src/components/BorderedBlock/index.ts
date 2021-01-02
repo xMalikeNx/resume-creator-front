@@ -1,0 +1,1 @@
+export { BorderedBlock } from './BorderedBlock';

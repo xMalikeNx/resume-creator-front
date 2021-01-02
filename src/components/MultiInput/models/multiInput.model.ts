@@ -1,13 +1,20 @@
 import { Instance, types } from 'mobx-state-tree';
 
 export const MultiInputStoreModel = types
-  .model({
+  .model('MultiInputModel', {
     value: types.array(types.string),
     error: '',
-    required: false,
   })
+  .preProcessSnapshot((snapshot) => {
+    if (Array.isArray(snapshot)) {
+      return [];
+    }
+
+    return snapshot;
+  })
+  .postProcessSnapshot((snapshot) => snapshot.value)
   .actions((self) => ({
-    setValue: (value: string) => {
+    addValue: (value: string) => {
       self.value.push(value);
       self.error = '';
     },
@@ -21,13 +28,11 @@ export const MultiInputStoreModel = types
 
 export type TcreateMultiInputModelProps = {
   value?: string[];
-  required?: boolean;
 };
 
 export const createMultiInputModel = (props?: TcreateMultiInputModelProps) =>
   MultiInputStoreModel.create({
     value: props?.value || [],
-    required: Boolean(props?.required),
   });
 
-export type InputModel = Instance<typeof MultiInputStoreModel>;
+export type MultiInputModel = Instance<typeof MultiInputStoreModel>;

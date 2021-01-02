@@ -2,7 +2,8 @@ import { flow, types } from 'mobx-state-tree';
 import { format } from 'date-fns';
 import { AuthApiService } from '../../services/auth.api.service';
 import { extractError } from '../../utils/extractError';
-import { UserStoreModel } from './user.store';
+import { formatDate } from '../../utils/dateHelpers';
+import { createUserStoreModel, UserStoreModel } from '../models/user.model';
 
 const authApi = new AuthApiService();
 
@@ -21,11 +22,9 @@ export const AuthStoreModel = types
         const {
           data: { payload },
         } = yield authApi.fetchProfile();
-        self.user = UserStoreModel.create({
+        self.user = createUserStoreModel({
           ...payload,
-          birthDate: payload.birthDate
-            ? format(new Date(payload.birthDate), 'dd.mm.yyyy')
-            : '',
+          birthDate: formatDate(payload.birthDate),
         });
         self.isLoggedIn = true;
       } catch (err) {

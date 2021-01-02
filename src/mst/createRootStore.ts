@@ -1,6 +1,6 @@
-import { createAuthStore } from './models/auth.store';
-import { RootStoreModel } from './models/root.store';
-import { createUiStoreModel } from './models/ui.store';
+import { createAuthStore } from './stores/auth.store';
+import { RootStoreModel } from './stores/root.store';
+import { createUiStoreModel } from './stores/ui.store';
 
 export const createRootStore = () => {
   const rootStore = RootStoreModel.create({

@@ -1,5 +1,5 @@
 import { getParent, Instance, types } from 'mobx-state-tree';
-import { UiStore } from '../../../../mst/models/ui.store';
+import { UiStore } from '../../../../mst/stores/ui.store';
 
 export const NotificationModel = types
   .model({

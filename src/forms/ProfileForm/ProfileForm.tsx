@@ -31,21 +31,35 @@ export const ProfileForm: FC = observer(() => {
     <div className={styles.wrapper}>
       <Form bordered title="Редактирование профиля" onSubmit={handleSubmit}>
         <div className={styles.formWrapper}>
-          <Input field={profileFormStore.firstName} title="Имя" required />
-          <Input field={profileFormStore.lastName} title="Фамилия" required />
+          <Input field={profileFormStore.profile.avatar} title="Аватарка" />
           <Input
-            field={profileFormStore.birthDate}
+            field={profileFormStore.profile.firstName}
+            title="Имя"
+            required
+          />
+          <Input
+            field={profileFormStore.profile.lastName}
+            title="Фамилия"
+            required
+          />
+          <Input
+            field={profileFormStore.profile.birthDate}
             title="Дата рождения"
             required
           />
           <Input
-            field={profileFormStore.profession}
+            field={profileFormStore.profile.profession}
             title="Текущая позиция"
             required
           />
-          <Input field={profileFormStore.email} required title="Email" />
-          <Input field={profileFormStore.phone} title="Телефон" />
-          <Input field={profileFormStore.address} title="Адрес" />
+          <Input
+            field={profileFormStore.profile.email}
+            required
+            title="Email"
+          />
+          <Input field={profileFormStore.profile.phone} title="Телефон" />
+          <Input field={profileFormStore.profile.address} title="Адрес" />
+          <Input field={profileFormStore.profile.about} title="О себе" />
         </div>
         <Button className={styles.submit} position="left" type="submit">
           Сохранить

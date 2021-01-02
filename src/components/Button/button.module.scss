@@ -26,3 +26,15 @@
     background: lighten($color: #383838, $amount: 5);
   }
 }
+
+.button_plain {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: #383838;
+
+  &:hover {
+    background: transparent;
+    text-decoration: underline;
+  }
+}
