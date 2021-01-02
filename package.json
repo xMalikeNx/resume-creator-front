@@ -78,7 +78,7 @@
     "workbox-webpack-plugin": "5.1.4"
   },
   "scripts": {
-    "start": "npm run build && npm run serve",
+    "start": "npm run serve",
     "dev": "node scripts/start.js",
     "build": "node scripts/build.js --env BASE_API_URL=HELLOWORLD",
     "test": "node scripts/test.js",
