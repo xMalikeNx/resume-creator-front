@@ -76,3 +76,24 @@
   grid-template-columns: 1fr 1fr;
   column-gap: 30px;
 }
+
+@media screen and (max-width: 1060px) {
+  .content {
+    display: block;
+  }
+
+  .left,
+  .right {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .education {
+    display: block;
+  }
+
+  .skills {
+    display: block;
+  }
+}

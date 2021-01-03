@@ -1,6 +1,20 @@
 .resumeBoard {
   padding-top: 60px;
   display: grid;
+  flex-wrap: wrap;
   grid-gap: 15px;
   grid-template-columns: repeat(4, 1fr);
+}
+
+@media screen and (max-width: 1060px) {
+  .resumeBoard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .resumeBoard {
+    grid-template-columns: 1fr;
+    padding-top: 30px;
+  }
 }
