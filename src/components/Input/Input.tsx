@@ -10,11 +10,21 @@ export type TInputProps = {
   title?: string;
   field: InputModel;
   noMargin?: boolean;
+  wrapperStyles?: React.CSSProperties;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const Input: FC<TInputProps> = observer((props) => {
   const inputId = useMemo(() => uid(), []);
-  const { title, id, field, noMargin, required, onChange, ...others } = props;
+  const {
+    title,
+    id,
+    field,
+    noMargin,
+    required,
+    onChange,
+    wrapperStyles,
+    ...others
+  } = props;
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -30,6 +40,7 @@ export const Input: FC<TInputProps> = observer((props) => {
   return (
     <div
       className={classNames(noMargin && styles.noMargin, styles.mnformControl)}
+      style={wrapperStyles}
     >
       {title && (
         <label

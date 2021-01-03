@@ -16,6 +16,10 @@ export const UserStoreModel = types.model({
   address: '',
   profession: '',
   birthDate: '',
+  instagram: '',
+  vk: '',
+  gitHub: '',
+  telegram: '',
 });
 
 export type TUserModel = Instance<typeof UserStoreModel>;
@@ -35,21 +39,29 @@ export const CreatableUserStoreModel = types.model({
   address: InputStoreModel,
   profession: InputStoreModel,
   birthDate: InputStoreModel,
+  instagram: InputStoreModel,
+  vk: InputStoreModel,
+  gitHub: InputStoreModel,
+  telegram: InputStoreModel,
 });
 
 export type TCreatableUserModel = Instance<typeof CreatableUserStoreModel>;
 
 export const createCreatableUserStoreModel = (props?: SnapshotIn<TUserModel>) =>
   CreatableUserStoreModel.create({
-    _id: props?._id || null,
-    login: createInputModel({ value: props?.login || '' }),
-    firstName: createInputModel({ value: props?.firstName || '' }),
-    lastName: createInputModel({ value: props?.lastName || '' }),
-    about: createInputModel({ value: props?.about || '' }),
-    email: createInputModel({ value: props?.email || '' }),
-    phone: createInputModel({ value: props?.phone || '' }),
-    avatar: createInputModel({ value: props?.avatar || '' }),
-    address: createInputModel({ value: props?.address || '' }),
-    profession: createInputModel({ value: props?.profession || '' }),
-    birthDate: createInputModel({ value: props?.birthDate || '' }),
+    _id: props?._id,
+    login: createInputModel({ value: props?.login }),
+    firstName: createInputModel({ value: props?.firstName }),
+    lastName: createInputModel({ value: props?.lastName }),
+    about: createInputModel({ value: props?.about }),
+    email: createInputModel({ value: props?.email }),
+    phone: createInputModel({ value: props?.phone }),
+    avatar: createInputModel({ value: props?.avatar }),
+    address: createInputModel({ value: props?.address }),
+    profession: createInputModel({ value: props?.profession }),
+    birthDate: createInputModel({ value: props?.birthDate }),
+    instagram: createInputModel({ value: props?.instagram }),
+    vk: createInputModel({ value: props?.vk }),
+    gitHub: createInputModel({ value: props?.gitHub }),
+    telegram: createInputModel({ value: props?.telegram }),
   });

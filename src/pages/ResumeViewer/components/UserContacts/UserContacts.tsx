@@ -2,6 +2,10 @@ import React, { FC } from 'react';
 import { BorderedBlock } from '../../../../components/BorderedBlock';
 import { TUserModel } from '../../../../mst/models/user.model';
 
+import { ReactComponent as TelegramIcon } from './telegram.svg';
+import { ReactComponent as InstagramIcon } from './instagram.svg';
+import { ReactComponent as GithubIcon } from './github.svg';
+import { ReactComponent as VkIcon } from './vk.svg';
 import styles from './userContacts.module.scss';
 
 export type UserContactsProps = {
@@ -34,6 +38,48 @@ export const UserContacts: FC<UserContactsProps> = ({ user }) => {
             {user.phone}
           </div>
         )}
+        <div className={styles.icons}>
+          {user.instagram && (
+            <a
+              href={user.instagram}
+              className={styles.icon}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <InstagramIcon />
+            </a>
+          )}
+          {user.gitHub && (
+            <a
+              href={user.gitHub}
+              className={styles.icon}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <GithubIcon />
+            </a>
+          )}
+          {user.vk && (
+            <a
+              href={user.vk}
+              className={styles.icon}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <VkIcon />
+            </a>
+          )}
+          {user.telegram && (
+            <a
+              href={user.telegram}
+              className={styles.icon}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <TelegramIcon />
+            </a>
+          )}
+        </div>
       </BorderedBlock>
     </div>
   );

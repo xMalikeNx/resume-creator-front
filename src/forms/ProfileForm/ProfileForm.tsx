@@ -59,7 +59,19 @@ export const ProfileForm: FC = observer(() => {
           />
           <Input field={profileFormStore.profile.phone} title="Телефон" />
           <Input field={profileFormStore.profile.address} title="Адрес" />
-          <Input field={profileFormStore.profile.about} title="О себе" />
+          <Input
+            field={profileFormStore.profile.about}
+            title="О себе"
+            wrapperStyles={{
+              flexGrow: 1,
+              width: '100%',
+              flexBasis: 'calc(100% - 15px)',
+            }}
+          />
+          <Input field={profileFormStore.profile.instagram} title="Instagram" />
+          <Input field={profileFormStore.profile.vk} title="Vk" />
+          <Input field={profileFormStore.profile.gitHub} title="GitHub" />
+          <Input field={profileFormStore.profile.telegram} title="Telegram" />
         </div>
         <Button className={styles.submit} position="left" type="submit">
           Сохранить

@@ -13,3 +13,13 @@
 .borderedBlock {
   padding-bottom: 30px;
 }
+
+.icons {
+  margin-top: 15px;
+}
+
+.icon {
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
+}
